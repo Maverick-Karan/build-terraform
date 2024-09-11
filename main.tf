@@ -9,7 +9,7 @@ module "rds" {
     username    = var.username
     password    = var.password
     identifier  = var.identifier
-#   db_name     = var.db_name
+    db_name     = var.db_name
     sg_rds      = module.sg.rds_sg_id
     private_az1 = var.private_az1
     parameter_group_name = var.parameter_group_name
@@ -26,6 +26,7 @@ module "application_load_balancer" {
   public_subnet_az1_id  = var.public_subnet_az1_id
   public_subnet_az2_id  = var.public_subnet_az2_id
   sg_alb                = module.sg.alb_sg_id
+  vpc_id                = var.vpc_id 
 
   depends_on = [
     module.rds
