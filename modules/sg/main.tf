@@ -3,13 +3,6 @@ resource "aws_security_group" "database_security_group" {
   name        = "rds sg"
   description = "enable fargate access on port 5432"
 
-  ingress {
-    from_port        = 5432
-    to_port          = 5432
-    protocol         = "tcp"
-    security_groups  = ["0.0.0.0/0"]
-  }
-
   egress {
     from_port        = 0
     to_port          = 0
@@ -51,13 +44,6 @@ resource "aws_security_group" "alb_security_group" {
 resource "aws_security_group" "fargate_security_group" {
   name        = "fargate sg"
   description = "enable access from alb and rds"
-
-  ingress {
-    from_port        = 0
-    to_port          = 0
-    protocol         = -1
-    security_groups  = ["0.0.0.0/0"]
-  }
 
   egress {
     from_port        = 0

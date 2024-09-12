@@ -15,3 +15,4 @@ vpc_id="vpc-0d6f7e5f8e2810121"
 # ECS Task Definitions variables
 exec_role="arn:aws:iam::339713165832:role/ecsTaskExecutionRole"
 api_image="339713165832.dkr.ecr.us-east-1.amazonaws.com/api"
+web_image="339713165832.dkr.ecr.us-east-1.amazonaws.com/web"

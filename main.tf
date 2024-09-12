@@ -48,6 +48,8 @@ module "ecs_task" {
   rds_endpoint          = module.rds.rds_db_endpoint
   exec_role             = var.exec_role
   api_image             = var.api_image
+  alb_endpoint          = "${module.application_load_balancer.alb_dns}:3000"
+  web_image             = var.web_image
   
   depends_on = [
     module.ecs_cluster
@@ -59,9 +61,11 @@ module "ecs_service" {
   source                = "./modules/ecs_service"
   ecs_cluster           = module.ecs_cluster.ecs_cluster_id
   api_task              = module.ecs_task.api_task_definition_arn
+  web_task              = module.ecs_task.web_task_definition_arn
   public_subnet_az1_id  = var.public_subnet_az1_id
   sg_fargate            = [module.sg.rds_sg_id,module.sg.alb_sg_id]
   tg_api_arn            = module.application_load_balancer.tg_api_arn
+  tg_web_arn            = module.application_load_balancer.tg_web_arn 
 
   depends_on = [
     module.ecs_task

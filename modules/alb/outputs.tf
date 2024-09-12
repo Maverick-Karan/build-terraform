@@ -9,3 +9,7 @@ output "tg_api_arn" {
 output "alb_listener_arn" {
   value = aws_lb_listener.api.arn
 }
+
+output "tg_web_arn" {
+    value = aws_lb_target_group.web_target_group.arn
+}

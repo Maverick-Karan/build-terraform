@@ -15,6 +15,7 @@ variable "vpc_id" {}
 # ECS Task Definitions variables
 variable "exec_role" {}
 variable "api_image" {}
+variable "web_image" {}
 
 
 
